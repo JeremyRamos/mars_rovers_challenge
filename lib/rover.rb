@@ -2,13 +2,6 @@ require 'pry'
 
 class Rover
 
-  # DIRECTIONS = {
-  #   'N' => 0,
-  #   'E' => 90,
-  #   'S' => 180,
-  #   'W' => 270
-  # }
-
   DIRECTIONS_MAP = {
      0 => 'N',
     90 => 'E',
@@ -20,20 +13,30 @@ class Rover
     @x, @y, @direction = position
   end
 
-  def starting_position
+  def position
     [@x, @y, @direction]
   end
 
   def explore(command)
+
     case command
     when 'M' then move_in_direction
-    when 'R' then @direction = DIRECTIONS_MAP[DIRECTIONS_MAP.invert[@direction] + 90]
-    when 'L' then @direction = DIRECTIONS_MAP[DIRECTIONS_MAP.invert[@direction] + 270]
+    when 'R' then change_direction(DIRECTIONS_MAP.invert[@direction] + 90)
+    when 'L' then change_direction(DIRECTIONS_MAP.invert[@direction] - 90)
     end
-    starting_position
+
+    position
   end
 
+  
   private
+  
+    def change_direction(degrees)
+      degrees = degrees == 360 ? 0 : degrees
+      degrees = degrees == -90 ? 270 : degrees
+
+      @direction = DIRECTIONS_MAP[degrees]
+    end
 
     def move_in_direction
       case @direction

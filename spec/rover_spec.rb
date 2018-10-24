@@ -4,7 +4,7 @@ require 'rover'
 RSpec.describe Rover do
   it 'has a starting position' do
     rover = Rover.new([0, 0, 'N'])
-    expect(rover.starting_position).to eq [0, 0, 'N']
+    expect(rover.position).to eq [0, 0, 'N']
   end
 
   it 'the rover can move forward' do
