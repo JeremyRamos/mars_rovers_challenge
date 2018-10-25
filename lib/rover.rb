@@ -9,37 +9,37 @@ class Rover
     270 => 'W'
   }
 
-  def initialize(position)
-    @x, @y, @direction = position
+  def initialize(initial_position)
+    @x, @y, @facing_direction = initial_position
   end
 
-  def position
-    [@x, @y, @direction]
+  def current_position
+    [@x, @y, @facing_direction]
   end
 
   def explore(command)
 
     case command
     when 'M' then move_in_direction
-    when 'R' then change_direction(DIRECTIONS_MAP.invert[@direction] + 90)
-    when 'L' then change_direction(DIRECTIONS_MAP.invert[@direction] - 90)
+    when 'R' then change_in_direction(DIRECTIONS_MAP.invert[@facing_direction] + 90)
+    when 'L' then change_in_direction(DIRECTIONS_MAP.invert[@facing_direction] - 90)
     end
 
-    position
+    current_position
   end
 
   
   private
   
-    def change_direction(degrees)
+    def change_in_direction(degrees)
       degrees = degrees == 360 ? 0 : degrees
       degrees = degrees == -90 ? 270 : degrees
 
-      @direction = DIRECTIONS_MAP[degrees]
+      @facing_direction = DIRECTIONS_MAP[degrees]
     end
 
     def move_in_direction
-      case @direction
+      case @facing_direction
       when 'N' then @y += 1
       when 'S' then @y -= 1
       when 'W' then @x -= 1

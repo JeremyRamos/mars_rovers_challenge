@@ -2,10 +2,13 @@ require 'spec_helper'
 require 'control_center'
 
 RSpec.describe ControlCenter do
-  it 'returns the correct final destination ' do
+  it 'returns the correct final destination' do
     file = File.read('command1.txt')
-    head, *tail = file
-    rover = ControlCenter.new(file)
-    expect(rover.get_final_destination).to eq [1, 3, 'N']
+    expect(ControlCenter.get_current_position(file)).to eq "1 3 N"
+  end
+
+  it 'returns the correct final destination' do
+    file = File.read('command2.txt')
+    expect(ControlCenter.get_current_position(file)).to eq "5 1 E"
   end
 end
