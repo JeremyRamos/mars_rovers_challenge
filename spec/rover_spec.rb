@@ -4,7 +4,7 @@ require 'rover'
 RSpec.describe Rover do
   it 'returns the current position' do
     rover = Rover.new([0, 0, 'N'])
-    expect(rover.current_position).to eq [0, 0, 'N']
+    expect(rover.current_coordinates).to eq [0, 0, 'N']
   end
 
   it 'can move forward' do

@@ -18,8 +18,8 @@ module ControlCenter
       rover.explore(command)
     end
 
-    puts "The final coordinates is...............wait for it..............#{rover.current_position.join(' ')}"
-    rover.current_position.join(' ')
+    puts "The final coordinates is...............wait for it..............#{rover.current_coordinates.join(' ')}"
+    rover.current_coordinates.join(' ')
   end
 
   def self.line_break

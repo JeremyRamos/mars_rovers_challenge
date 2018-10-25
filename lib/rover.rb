@@ -13,7 +13,7 @@ class Rover
     @x, @y, @facing_direction = initial_position
   end
 
-  def current_position
+  def current_coordinates
     [@x, @y, @facing_direction]
   end
 
@@ -25,7 +25,7 @@ class Rover
     when 'L' then change_in_direction(DIRECTIONS_MAP.invert[@facing_direction] - 90)
     end
 
-    current_position
+    current_coordinates
   end
 
   
