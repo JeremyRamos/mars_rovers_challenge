@@ -2,7 +2,7 @@ require_relative 'rover'
 
 module ControlCenter
 
-  def self.get_current_position(file)
+  def self.get_final_coordinates(file)
     new_file = file.split.rotate(3)
     head, *tail = new_file
     tail[0..1] = tail[0..1].map(&:to_i)
@@ -38,7 +38,7 @@ module ControlCenter
     file_name = gets.chomp
     if file_name == 'command1.txt' || file_name == "command2.txt"
       file = File.read(file_name)
-      ControlCenter.get_current_position(file)
+      ControlCenter.get_final_coordinates(file)
     else
       puts "I told you already, the valid options are: 'command1.txt' and 'command2.txt'."
       puts 'Now you will have to do this all over.'
